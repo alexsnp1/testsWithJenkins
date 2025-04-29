@@ -16,7 +16,6 @@ public class AutomationPracticeForm {
     static void beforeAll() {
         Configuration.browserSize = "1600x900";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
 
     }
 
