@@ -16,6 +16,7 @@ public class AutomationPracticeForm {
     static void beforeAll() {
         Configuration.browserSize = "1600x900";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager"; //чтобы тест не падал по таймауту из-за долгой загрузки страниц
 
     }
 
@@ -27,16 +28,16 @@ public class AutomationPracticeForm {
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("M");
         $("#userEmail").setValue("myemail@mail.com");
-        $("label[for='gender-radio-1']").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("79991113399");
         $("#dateOfBirthInput").click();
-        $("[class=react-datepicker__month-container]").$("[aria-label='Choose Monday, April 14th, 2025']").click();
-        $("#subjectsInput").setValue("Eng");
-        $("[class='subjects-auto-complete__menu css-26l3qy-menu']").$("#react-select-2-option-0").click();
-        $("label[for='hobbies-checkbox-2']").click();
+        $(".react-datepicker__month-select").$(byText("September")).click();
+        $(".react-datepicker__year-select").$(byText("2010")).click();
+        $(".react-datepicker__month").$(byText("3")).click();
+
+        $("#subjectsInput").setValue("Eng").pressEnter();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#currentAddress").setValue("Address 1");
-        File file = new File("src/test/resources/img.png");
-        $("#uploadPicture").uploadFile(file);
         $("#uploadPicture").uploadFromClasspath("img.png");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
@@ -44,17 +45,16 @@ public class AutomationPracticeForm {
         $("#stateCity-wrapper").$(byText("Noida")).click();
         $("#submit").click();
 
-        $("[class='modal-content']").shouldHave(text("Student Name Alex M"));
-        $("[class='modal-content']").shouldHave(text("Student Email myemail@mail.com"));
-        $("[class='modal-content']").shouldHave(text("Gender Male"));
-        $("[class='modal-content']").shouldHave(text("Mobile 7999111339"));
-        $("[class='modal-content']").shouldHave(text("Date of Birth	14 April,2025"));
-        $("[class='modal-content']").shouldHave(text("Subjects English"));
-        $("[class='modal-content']").shouldHave(text("Hobbies Reading"));
-        $("[class='modal-content']").shouldHave(text("Picture img.png"));
-        $("[class='modal-content']").shouldHave(text("Address Address 1"));
-        $("[class='modal-content']").shouldHave(text("State and City NCR Noida"));
-
+        $(".modal-content").shouldHave(text("Student Name Alex M"));
+        $(".modal-content").shouldHave(text("Student Email myemail@mail.com"));
+        $(".modal-content").shouldHave(text("Gender Male"));
+        $(".modal-content").shouldHave(text("Mobile 7999111339"));
+        $(".modal-content").shouldHave(text("Date of Birth 03 September,2010"));
+        $(".modal-content").shouldHave(text("Subjects English"));
+        $(".modal-content").shouldHave(text("Hobbies Reading"));
+        $(".modal-content").shouldHave(text("Picture img.png"));
+        $(".modal-content").shouldHave(text("Address Address 1"));
+        $(".modal-content").shouldHave(text("State and City NCR Noida"));
 
     }
 }
