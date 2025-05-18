@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultsComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -27,6 +28,7 @@ public class RegistrationPage {
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    ResultsComponent resultsComponent = new ResultsComponent();
 
 
     public RegistrationPage openPage() {
@@ -126,9 +128,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResults(String key, String value) {
-        $(".modal-content").$(byText(key)).parent()
-                .shouldHave(text(value));
-        //нашел ключ, вышел наверх на 1 элемент и проверил что есть значение
+        resultsComponent.check(key, value);
 
         return this;
     }
