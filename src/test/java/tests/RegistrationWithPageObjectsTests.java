@@ -13,7 +13,10 @@ public class RegistrationWithPageObjectsTests extends TestBase {
 
     @Test
     void fillFormTest() {
-        registrationPage.openPage().setFirstName("Alex")
+        registrationPage
+                .openPage()
+                .removeBanner()
+                .setFirstName("Alex")
                 .setLastName("M")
                 .setEmail("myemail@mail.com")
                 .setGender("Male")
@@ -59,7 +62,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     }
 
     @Test
-    void NegativeDataTest() {
+    void negativeDataTest() {
         registrationPage.openPage()
                 .setFirstName("Alex")
                 .setLastName("M")
