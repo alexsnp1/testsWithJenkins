@@ -9,7 +9,7 @@ public class TestBase {
     static void beforeAll() {
         Configuration.browserSize = "1600x900";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager"; //при долгой загрузке не падает тест
-        Configuration.holdBrowserOpen = true; //не закрывается браузер
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.holdBrowserOpen = true;
     }
 }
