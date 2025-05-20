@@ -33,17 +33,14 @@ public class TestData {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
 
     }
-
-//    public static String getRandomPhone(long min, long max) {
-//        long randomNumber = ThreadLocalRandom.current().nextLong(min, max + 1);
-//        return String.valueOf(randomNumber);
-//    }
-
-    public static String getRandomPhone() {
         //получить телефон такого формата +5 (932) 944 - 92 - 16
 //            return String.format("+%s (%s) %s - %s - %s", getRandomInt(1,9), getRandomInt(111,999),
 //                    getRandomInt(111,999), getRandomInt(11,99), getRandomInt(11,99)); }
-        return String.format("%s%s", getRandomInt(10000,99999), getRandomInt(10000,99999)); }
+//
+
+    public static String getRandomPhone() {
+        return String.format("%s%s", getRandomInt(10000,99999), getRandomInt(10000,99999));
+    }
 
     public static String getRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
