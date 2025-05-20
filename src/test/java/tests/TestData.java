@@ -1,8 +1,11 @@
 package tests;
 
+import com.github.javafaker.Faker;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TestData {
+    Faker faker = new Faker();
     public static void main(String[] args) {
         System.out.println(firstName);
         System.out.println(userGender);
@@ -14,16 +17,24 @@ public class TestData {
     }
 
     public static String
-            firstName = "Alex",
-            lastName = "May",
-            userEmail = "myemail@mail.com",
+            //firstName = "Alex",
+            //lastName = "May",
+            //userEmail = "myemail@mail.com",
             userGender = getRandomGender(),
-            userPhone = "7999111339",
+            //userPhone = "7999111339",
             userSubjects = getRandomSubject(),
             userHobbies = getRandomHobbies(),
-            userAddress = "Address 1",
+            //userAddress = "Address 1",
             userState = getRandomState(),
             userCity = getRandomCity();
+
+    public static String
+            firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            userEmail = faker.internet().emailAddress(),
+            userPhone = faker.phoneNumber(),
+            userAddress = faker.address().streetAddress();
+
 
 
     public static int getRandomInt(int min, int max) {

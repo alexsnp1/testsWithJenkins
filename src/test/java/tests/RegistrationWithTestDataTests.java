@@ -1,14 +1,16 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+
+import java.util.Locale;
 
 import static tests.TestData.*;
 
 public class RegistrationWithTestDataTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
     @Test
     void fillFormTest() {
         registrationPage
