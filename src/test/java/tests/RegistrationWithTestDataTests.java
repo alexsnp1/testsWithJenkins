@@ -11,6 +11,14 @@ import static tests.TestData.*;
 public class RegistrationWithTestDataTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    Faker faker = new Faker(new Locale("en-US"));
+
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String userEmail = faker.internet().emailAddress();
+    String userPhone = faker.phoneNumber().cellPhone();
+    String userAddress = faker.address().streetAddress();
+
     @Test
     void fillFormTest() {
         registrationPage
