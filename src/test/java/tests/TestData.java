@@ -16,9 +16,9 @@ public class TestData {
     public static String
             firstName = "Alex",
             lastName = "May",
-            userEmail = "myemail",
+            userEmail = "myemail@mail.com",
             userGender = getRandomGender(),
-            userPhone = "79991113399",
+            userPhone = "7999111339",
             userSubjects = getRandomSubject(),
             userHobbies = getRandomHobbies(),
             userAddress = "Address 1",

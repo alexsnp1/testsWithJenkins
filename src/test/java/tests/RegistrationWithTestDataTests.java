@@ -30,16 +30,16 @@ public class RegistrationWithTestDataTests extends TestBase {
                 .setStateCityWrapper(userCity)
                 .clickSubmitButton();
 
-        registrationPage.checkResults("Student Name", "Alex M")
-                .checkResults("Student Email", "myemail@mail.com")
-                .checkResults("Gender", "Male")
-                .checkResults("Mobile", "7999111339")
+        registrationPage.checkResults("Student Name", firstName + " " + lastName)
+                .checkResults("Student Email", userEmail)
+                .checkResults("Gender", userGender)
+                .checkResults("Mobile", userPhone)
                 .checkResults("Date of Birth", "03 September,2010")
-                .checkResults("Subjects", "English")
-                .checkResults("Hobbies", "Reading")
+                .checkResults("Subjects", userSubjects)
+                .checkResults("Hobbies", userHobbies)
                 .checkResults("Picture", "img.png")
-                .checkResults("Address", "Address 1")
-                .checkResults("State and City", "NCR Noida");
+                .checkResults("Address", userAddress)
+                .checkResults("State and City", userState + " " + userCity);
 
     }
 
@@ -50,7 +50,7 @@ public class RegistrationWithTestDataTests extends TestBase {
                 .setLastName("M")
                 .setEmail("myemail@mail.com")
                 .setGender("Male")
-                .setUserNumber("79991113399")
+                .setUserNumber("7999111339")
                 .clickSubmitButton();
 
         registrationPage.checkResults("Student Name", "Alex M")
