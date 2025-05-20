@@ -16,7 +16,6 @@ public class RegistrationWithTestDataTests extends TestBase {
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
     String userEmail = faker.internet().emailAddress();
-    String userPhone = faker.phoneNumber().cellPhone();
     String userAddress = faker.address().streetAddress();
 
     @Test
@@ -29,11 +28,11 @@ public class RegistrationWithTestDataTests extends TestBase {
                 .setEmail(userEmail)
                 .setGender(userGender)
                 .setUserNumber(userPhone)
-                .setDateOfBirth("3", "September", "2010")
+                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
                 .setSubjectsInput(userSubjects)
                 .setHobbiesWrapper(userHobbies)
                 .setCurrentAddress(userAddress)
-                .setPicture("img.png")
+                .setPicture(userPicture)
                 .setState()
                 .setStateCityWrapper(userState)
                 .setCity()
@@ -44,10 +43,10 @@ public class RegistrationWithTestDataTests extends TestBase {
                 .checkResults("Student Email", userEmail)
                 .checkResults("Gender", userGender)
                 .checkResults("Mobile", userPhone)
-                .checkResults("Date of Birth", "03 September,2010")
+                .checkResults("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
                 .checkResults("Subjects", userSubjects)
                 .checkResults("Hobbies", userHobbies)
-                .checkResults("Picture", "img.png")
+                .checkResults("Picture", userPicture)
                 .checkResults("Address", userAddress)
                 .checkResults("State and City", userState + " " + userCity);
 
@@ -56,32 +55,32 @@ public class RegistrationWithTestDataTests extends TestBase {
     @Test
     void minDataTest() {
         registrationPage.openPage()
-                .setFirstName("Alex")
-                .setLastName("M")
-                .setEmail("myemail@mail.com")
-                .setGender("Male")
-                .setUserNumber("7999111339")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(userEmail)
+                .setGender(userGender)
+                .setUserNumber(userPhone)
                 .clickSubmitButton();
 
-        registrationPage.checkResults("Student Name", "Alex M")
-                .checkResults("Student Email", "myemail@mail.com")
-                .checkResults("Gender", "Male")
-                .checkResults("Mobile", "7999111339");
+        registrationPage.checkResults("Student Name", firstName + " " + lastName)
+                .checkResults("Student Email", userEmail)
+                .checkResults("Gender", userGender)
+                .checkResults("Mobile", userPhone);
     }
 
     @Test
     void negativeDataTest() {
         registrationPage.openPage()
-                .setFirstName("Alex")
-                .setLastName("M")
+                .setFirstName(firstName)
+                .setLastName(lastName)
                 .setEmail("myemail")
-                .setGender("Male")
+                .setGender(userGender)
                 .setUserNumber("my number")
                 .clickSubmitButton();
 
-        registrationPage.checkResults("Student Name", "Alex M")
+        registrationPage.checkResults("Student Name", firstName + " " + lastName)
                 .checkResults("Student Email", "myemail")
-                .checkResults("Gender", "Male")
+                .checkResults("Gender", userGender)
                 .checkResults("Mobile", "my number");
     }
 }
