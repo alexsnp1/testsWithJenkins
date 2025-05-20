@@ -8,6 +8,8 @@ public class TestData {
         System.out.println(userGender);
         System.out.println(userSubjects);
         System.out.println(userHobbies);
+        System.out.println(userState);
+        System.out.println(userCity);
 
     }
 
@@ -18,7 +20,11 @@ public class TestData {
             userGender = getRandomGender(),
             userPhone = "79991113399",
             userSubjects = getRandomSubject(),
-            userHobbies = getRandomHobbies();
+            userHobbies = getRandomHobbies(),
+            userAddress = "Address 1",
+            userState = getRandomState(),
+            userCity = getRandomCity();
+
 
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
@@ -42,6 +48,24 @@ public class TestData {
     public static String getRandomHobbies() {
         String[] hobbies = {"Reading", "Sports", "Music"};
         return getRandomItemFromArray(hobbies);
+    }
+    public static String getRandomState() {
+        String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+        return getRandomItemFromArray(states);
+    }
+    public static String getRandomCity() {
+        String[] cities = {};
+        if (userState.equals("NCR")) {
+            cities = new String[]{"Delhi", "Gurgaon", "Noida"};
+        } else if (userState.equals("Uttar Pradesh")) {
+            cities = new String[]{"Agra", "Lucknow", "Merrut"};
+        } else if (userState.equals("Haryana")) {
+            cities = new String[]{"Karnal", "Panipat"};
+        } else if (userState.equals("Rajasthan")) {
+            cities = new String[]{"Jaipur", "Jaiselmer"};
+        }
+
+        return getRandomItemFromArray(cities);
     }
 
 

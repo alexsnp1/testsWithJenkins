@@ -22,12 +22,12 @@ public class RegistrationWithTestDataTests extends TestBase {
                 .setDateOfBirth("3", "September", "2010")
                 .setSubjectsInput(userSubjects)
                 .setHobbiesWrapper(userHobbies)
-                .setCurrentAddress("Address 1")
+                .setCurrentAddress(userAddress)
                 .setPicture("img.png")
                 .setState()
-                .setStateCityWrapper("NCR")
+                .setStateCityWrapper(userState)
                 .setCity()
-                .setStateCityWrapper("Noida")
+                .setStateCityWrapper(userCity)
                 .clickSubmitButton();
 
         registrationPage.checkResults("Student Name", "Alex M")
