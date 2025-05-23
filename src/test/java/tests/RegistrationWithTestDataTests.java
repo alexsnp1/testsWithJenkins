@@ -7,16 +7,11 @@ import pages.RegistrationPage;
 import java.util.Locale;
 
 import static tests.TestData.*;
+import static tests.TestDataWithFaker.*;
 
 public class RegistrationWithTestDataTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-    Faker faker = new Faker(new Locale("en-US"));
-
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String userEmail = faker.internet().emailAddress();
-    String userAddress = faker.address().streetAddress();
 
     @Test
     void fillFormTest() {
