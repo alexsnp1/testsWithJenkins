@@ -2,31 +2,32 @@ package tests;
 
 import com.github.javafaker.Faker;
 
+import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TestData {
-    public static void main(String[] args) {
-        // System.out.println(firstName);
-//        System.out.println(userGender);
-//        System.out.println(userSubjects);
-//        System.out.println(userHobbies);
-//        System.out.println(userState);
-//        System.out.println(userCity);
-//        System.out.println(userPhone);
 
-    }
+
+    public static Faker faker = new Faker(new Locale("en-US"));
+
+    public static String firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            userEmail = faker.internet().emailAddress(),
+            userGender = faker.options().option("Male", "Female", "Other"),
+            userAddress = faker.address().streetAddress(),
+            userSubjects = faker.options().option("Eng", "Che", "Comm", "Eco", "Soc"),
+            userHobbies = faker.options().option("Reading", "Sports", "Music"),
+            monthOfBirth = faker.options().option("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"),
+            userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
+            userPicture = faker.options().option("img.png", "img2.jpeg", "img3.jpg");
+
 
     public static String
-            userGender = getRandomGender(),
             userPhone = getRandomPhone(),
-            userSubjects = getRandomSubject(),
-            userHobbies = getRandomHobbies(),
-            userState = getRandomState(),
             userCity = getRandomCity(),
             dayOfBirth = getRandomDay(),
-            monthOfBirth = getRandomMonth(),
-            yearOfBirth = getRandomYear(),
-            userPicture = getRandomPicture();
+            yearOfBirth = getRandomYear();
 
 
     public static int getRandomInt(int min, int max) {
@@ -42,44 +43,27 @@ public class TestData {
         return String.format("%s%s", getRandomInt(10000,99999), getRandomInt(10000,99999));
     }
 
-    public static String getRandomGender() {
-        String[] genders = {"Male", "Female", "Other"};
-        return getRandomItemFromArray(genders);
-    }
-
     public static String getRandomItemFromArray(String[] array) {
         int index = getRandomInt(0, array.length - 1);
 
         return array[index];
 
     }
-
     public static String getRandomDay() {
-        int day = ThreadLocalRandom.current().nextInt(1, 31);
-        return String.format("%02d", day);
-    }
-    public static String getRandomMonth() {
-        String[] months = {"January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"};
-        return getRandomItemFromArray(months);
+            int day = ThreadLocalRandom.current().nextInt(1, 31);
+            return day < 10 ? String.valueOf(day) : String.format("%02d", day);
+
     }
     public static String getRandomYear() {
         int year = ThreadLocalRandom.current().nextInt(1990, 2025);
         return String.valueOf(year);
         }
 
-    public static String getRandomSubject() {
-        String[] subjects = {"Eng", "Che", "Comm", "Eco", "Soc"};
-        return getRandomItemFromArray(subjects);
-    }
-    public static String getRandomHobbies() {
-        String[] hobbies = {"Reading", "Sports", "Music"};
-        return getRandomItemFromArray(hobbies);
-    }
-    public static String getRandomState() {
-        String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-        return getRandomItemFromArray(states);
-    }
+//    public static String getRandomSubject() {
+//
+//        String[] subjects = {"Eng", "Che", "Comm", "Eco", "Soc"};
+//        return getRandomItemFromArray(subjects);
+//    }
     public static String getRandomCity() {
         String[] cities = {};
         if (userState.equals("NCR")) {
@@ -94,12 +78,4 @@ public class TestData {
 
         return getRandomItemFromArray(cities);
     }
-    public static String getRandomPicture() {
-        String[] pictures = {"img.png", "img2.jpeg", "img3.jpg"};
-        return getRandomItemFromArray(pictures);
-    }
-
-
-
-
 }
