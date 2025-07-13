@@ -49,3 +49,9 @@ tasks.withType(Test) {
             // только для класса с тегом simple (ну или метода если угодно, у нас класс)
         }
     }
+task demoqa_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("demoqa")
+        // только для класса с тегом simple (ну или метода если угодно, у нас класс)
+    }
+}
