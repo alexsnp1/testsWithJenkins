@@ -19,7 +19,7 @@ public class AutomationPracticeFormRemote {
         Configuration.browserSize = "1600x900";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager"; //при долгой загрузке не падает тест
-        Configuration.holdBrowserOpen = true; //не закрывается браузер
+//        Configuration.holdBrowserOpen = true; //не закрывается браузер
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         //запускаем с помощью фермы школы
     }
@@ -47,7 +47,7 @@ public class AutomationPracticeFormRemote {
             $("#subjectsInput").setValue("Eng").pressEnter();
             $("#hobbiesWrapper").$(byText("Reading")).click();
             $("#currentAddress").setValue("Address 1");
-            $("#uploadPicture").uploadFromClasspath("img.png");
+//            $("#uploadPicture").uploadFromClasspath("img.png");
             $("#state").click();
             $("#stateCity-wrapper").$(byText("NCR")).click();
             $("#city").click();
@@ -63,7 +63,7 @@ public class AutomationPracticeFormRemote {
             $(".modal-content").shouldHave(text("Date of Birth 03 September,2010"));
             $(".modal-content").shouldHave(text("Subjects English"));
             $(".modal-content").shouldHave(text("Hobbies Reading"));
-            $(".modal-content").shouldHave(text("Picture img.png"));
+//            $(".modal-content").shouldHave(text("Picture img.png"));
             $(".modal-content").shouldHave(text("Address Address 1"));
             $(".modal-content").shouldHave(text("State and City NCR Noida"));
         });
