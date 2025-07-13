@@ -52,6 +52,6 @@ tasks.withType(Test) {
 task demoqa_test(type: Test) {
     useJUnitPlatform {
         includeTags("demoqa")
-        // только для класса с тегом simple (ну или метода если угодно, у нас класс)
+        // только для класса с тегом demoqa (ну или метода если угодно, у нас класс)
     }
 }

@@ -20,6 +20,8 @@ public class AutomationPracticeFormRemote {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager"; //при долгой загрузке не падает тест
         Configuration.holdBrowserOpen = true; //не закрывается браузер
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        //запускаем с помощью фермы школы
     }
 
     @Test
