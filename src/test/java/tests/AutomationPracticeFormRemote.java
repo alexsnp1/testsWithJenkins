@@ -30,9 +30,13 @@ public class AutomationPracticeFormRemote {
     }
 
     @AfterEach
+    //добавляем скриншот
     void addAttachments() {
         Attach.screenshotAs("Last Screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();;
     }
+
     @Test
     @Tag("demoqa")
     void fillFormTest() {

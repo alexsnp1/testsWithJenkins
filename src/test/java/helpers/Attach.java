@@ -18,4 +18,23 @@ public class Attach {
     public static byte[] screenshotAs(String attachName) {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
+    //добавляем source
+    @Attachment(value = "Page source", type = "text/plain")
+    public static byte[] pageSource() {
+        return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
+    }
+
+    //добавляем любой текст + нужно для добавления логов
+    @Attachment(value = "{attachName}", type = "text/plain")
+    public static String attachAsText(String attachName, String message) {
+        return message;
+    }
+
+    //добавляем логи консоли
+    public static void browserConsoleLogs() {
+        attachAsText(
+                "Browser console logs",
+                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+        );
+    }
 }
