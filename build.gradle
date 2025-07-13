@@ -15,7 +15,22 @@ dependencies {
 
     )
 }
-test {
-    systemProperties += System.properties
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    //этим мы расширяем логирование и при запуске теста в консоль
+    //будет выводиться больше данных
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
+    //отдельная кастомная таска
+    task simple_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("simple")
+            // только для класса с тегом simple (ну или метода если угодно, у нас класс)
+        }
+    }
