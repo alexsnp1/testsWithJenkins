@@ -31,8 +31,12 @@ dependencies {
 
     )
 }
-tasks.withType(Test) {
+test {
     useJUnitPlatform()
+}
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
 
     //этим мы расширяем логирование и при запуске теста в консоль
     //будет выводиться больше данных
@@ -54,5 +58,11 @@ task demoqa_test(type: Test) {
     useJUnitPlatform {
         includeTags("demoqa")
         // только для класса с тегом demoqa (ну или метода если угодно, у нас класс)
+    }
+    task property_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("property")
+            // только для класса с тегом demoqa (ну или метода если угодно, у нас класс)
+        }
     }
 }
