@@ -47,7 +47,7 @@ tasks.withType(Test) {
         }
     }
 }
-    //отдельная кастомная таска
+    //отдельная кастомная таск
     task simple_test(type: Test) {
         useJUnitPlatform {
             includeTags("simple")
